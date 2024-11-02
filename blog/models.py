@@ -7,6 +7,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField()
     photo = models.ImageField()
+    video = models.FileField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
@@ -17,18 +18,18 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    class Photo(models.Model):
-        title = models.CharField(max_length=255, blank=False, null=False)
-        photo = models.ImageField(upload_to='Photos/', null=True, max_length=255)
+    # class Photo(models.Model):
+    #     title = models.CharField(max_length=255, blank=False, null=False)
+    #     photo = models.ImageField(upload_to='Photos/', null=True, max_length=255)
+    #
+    #     def repr(self):
+    #         return 'Photo(%s, %s)' % (self.title, self.photo)
+    #
+    #     def str(self):
+    #         return self.title
 
-        def repr(self):
-            return 'Photo(%s, %s)' % (self.title, self.photo)
-
-        def str(self):
-            return self.title
-
-    class Item(models.Model):
-        name = models.CharField(max_length=200)
-        body = models.TextField(max_length=500)
-
-        date = models.DateTimeField(default=timezone.now)
+    # class Item(models.Model):
+    #     name = models.CharField(max_length=200)
+    #     body = models.TextField(max_length=500)
+    #
+    #     date = models.DateTimeField(default=timezone.now)

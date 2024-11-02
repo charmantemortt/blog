@@ -8,8 +8,12 @@
             </div>
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <p>{{ post.text|linebreaksbr }}</p>
-            <img src="{{ post.photo.url }}" width="250px">
-
+            <img src="{{ post.photo.url }}" width="250px" >
+            {%if post.video%}
+                <video width="450" height="300" controls="controls">
+                    <source src="{{ post.video.url }}" type='video/webm; codecs="vp8, vorbis"' >
+                </video>
+            {%endif%}
         </div>
     {% endfor %}
 {% endblock %}
